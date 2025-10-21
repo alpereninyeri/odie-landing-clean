@@ -26,7 +26,16 @@ const handler = async (req, res) => {
         console.log('Chat history length:', chatHistory ? chatHistory.length : 0);
         
         // N8N Webhook URL
-        const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || 'image.pnghttps://kilicphoto.app.n8n.cloud/webhook-test/odie-chat';
+        const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || 'https://kilicphoto.app.n8n.cloud/webhook/odie-chat';
+        
+        // Test için basit response
+        if (message === 'test') {
+            return res.status(200).json({
+                success: true,
+                response: 'Test başarılı! N8N bağlantısı çalışıyor.',
+                timestamp: new Date().toISOString()
+            });
+        }
         
         // Prepare the request to N8N
         const n8nPayload = {

@@ -37,6 +37,15 @@ const handler = async (req, res) => {
             });
         }
         
+        // Basit AI response (N8N olmadan)
+        if (message.toLowerCase().includes('merhaba') || message.toLowerCase().includes('selam')) {
+            return res.status(200).json({
+                success: true,
+                response: 'Merhaba! Ben Odie, Kılıç Agency\'nin AI asistanıyım. Size nasıl yardımcı olabilirim?',
+                timestamp: new Date().toISOString()
+            });
+        }
+        
         // Prepare the request to N8N
         const n8nPayload = {
             message: message,

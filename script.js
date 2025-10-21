@@ -109,12 +109,7 @@ async function handleFirstMessage() {
         }, 50);
     });
     
-    // Show navigation links immediately
-    navLinks.style.display = 'flex';
-    navLinks.style.opacity = '1';
-    navLinks.style.transform = 'translateY(0)';
-    
-    // Add user message to chat
+    // Add user message to chat first
     addMessage(message, true);
     
     // Show thinking indicator

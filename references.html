@@ -38,6 +38,72 @@
             border-color: #E94E1B;
             box-shadow: 0 10px 30px rgba(233, 78, 27, 0.2);
         }
+        
+        .reference-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .client-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #E94E1B, #FF6B35);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .client-info h3 {
+            color: #E94E1B;
+            margin: 0 0 4px 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .client-info p {
+            color: #888;
+            margin: 0;
+            font-size: 14px;
+        }
+        
+        .reference-content p {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 16px;
+            font-size: 15px;
+            font-style: italic;
+        }
+        
+        .reference-rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .stars {
+            color: #FFD700;
+            font-size: 16px;
+        }
+        
+        .rating-text {
+            color: #E94E1B;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .reference-footer p {
+            color: #888;
+            margin: 0;
+            font-size: 14px;
+            font-weight: 500;
+        }
         .back-btn {
             display: inline-flex;
             align-items: center;
@@ -67,19 +133,123 @@
             
             <div class="reference-grid">
                 <div class="reference-item">
-                    <h3 style="color: #E94E1B; margin-bottom: 15px;">Tech Startup</h3>
-                    <p>"Kılıç Agency ile çalışmak harika bir deneyimdi. Yaratıcı çözümleri ve profesyonel yaklaşımları bizi çok etkiledi."</p>
-                    <p style="color: #888; margin-top: 15px; font-size: 14px;">- CEO, Tech Startup</p>
+                    <div class="reference-header">
+                        <div class="client-avatar">TS</div>
+                        <div class="client-info">
+                            <h3>TechStart Solutions</h3>
+                            <p>Fintech Startup</p>
+                        </div>
+                    </div>
+                    <div class="reference-content">
+                        <p>"Kılıç Agency ile çalışmak harika bir deneyimdi. Yaratıcı çözümleri ve profesyonel yaklaşımları bizi çok etkiledi. Landing page'imiz sayesinde yatırım turumuzda %40 daha fazla ilgi gördük."</p>
+                        <div class="reference-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5/5</span>
+                        </div>
+                    </div>
+                    <div class="reference-footer">
+                        <p>- Ahmet Yılmaz, CEO</p>
+                    </div>
                 </div>
+                
                 <div class="reference-item">
-                    <h3 style="color: #E94E1B; margin-bottom: 15px;">E-ticaret Sitesi</h3>
-                    <p>"Ürün fotoğraflarımız ve video içeriklerimiz sayesinde satışlarımız %300 arttı. Teşekkürler Kılıç Agency!"</p>
-                    <p style="color: #888; margin-top: 15px; font-size: 14px;">- Pazarlama Müdürü</p>
+                    <div class="reference-header">
+                        <div class="client-avatar">EM</div>
+                        <div class="client-info">
+                            <h3>E-Moda Store</h3>
+                            <p>E-ticaret Platformu</p>
+                        </div>
+                    </div>
+                    <div class="reference-content">
+                        <p>"Ürün fotoğraflarımız ve video içeriklerimiz sayesinde satışlarımız %300 arttı. Profesyonel çekimler ve yaratıcı konseptler müşteri deneyimimizi tamamen değiştirdi."</p>
+                        <div class="reference-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5/5</span>
+                        </div>
+                    </div>
+                    <div class="reference-footer">
+                        <p>- Elif Kaya, Pazarlama Müdürü</p>
+                    </div>
                 </div>
+                
                 <div class="reference-item">
-                    <h3 style="color: #E94E1B; margin-bottom: 15px;">Restoran Zinciri</h3>
-                    <p>"Sosyal medya içeriklerimiz ve reklam videolarımız müşteri memnuniyetimizi artırdı. Kesinlikle tavsiye ederim."</p>
-                    <p style="color: #888; margin-top: 15px; font-size: 14px;">- Genel Müdür</p>
+                    <div class="reference-header">
+                        <div class="client-avatar">RZ</div>
+                        <div class="client-info">
+                            <h3>Restoran Zinciri</h3>
+                            <p>5 Şubeli Restoran</p>
+                        </div>
+                    </div>
+                    <div class="reference-content">
+                        <p>"Sosyal medya içeriklerimiz ve reklam videolarımız müşteri memnuniyetimizi artırdı. Instagram takipçi sayımız 3 katına çıktı. Kesinlikle tavsiye ederim."</p>
+                        <div class="reference-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5/5</span>
+                        </div>
+                    </div>
+                    <div class="reference-footer">
+                        <p>- Mehmet Özkan, Genel Müdür</p>
+                    </div>
+                </div>
+                
+                <div class="reference-item">
+                    <div class="reference-header">
+                        <div class="client-avatar">KK</div>
+                        <div class="client-info">
+                            <h3>Kozmetik Koleksiyon</h3>
+                            <p>Kozmetik Markası</p>
+                        </div>
+                    </div>
+                    <div class="reference-content">
+                        <p>"Influencer işbirlikleri ve viral video konseptleri sayesinde marka bilinirliğimiz %250 arttı. Yaratıcı yaklaşımları ve profesyonel ekibi ile çalışmak çok keyifli."</p>
+                        <div class="reference-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5/5</span>
+                        </div>
+                    </div>
+                    <div class="reference-footer">
+                        <p>- Zeynep Demir, Marka Müdürü</p>
+                    </div>
+                </div>
+                
+                <div class="reference-item">
+                    <div class="reference-header">
+                        <div class="client-avatar">İŞ</div>
+                        <div class="client-info">
+                            <h3>İnşaat Şirketi</h3>
+                            <p>Kurumsal Şirket</p>
+                        </div>
+                    </div>
+                    <div class="reference-content">
+                        <p>"3 dakikalık tanıtım filmimiz sayesinde yeni projelerimizde %60 daha fazla talep aldık. Drone çekimleri ve profesyonel seslendirme mükemmeldi."</p>
+                        <div class="reference-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5/5</span>
+                        </div>
+                    </div>
+                    <div class="reference-footer">
+                        <p>- Can Arslan, İletişim Müdürü</p>
+                    </div>
+                </div>
+                
+                <div class="reference-item">
+                    <div class="reference-header">
+                        <div class="client-avatar">SM</div>
+                        <div class="client-info">
+                            <h3>Sağlık Merkezi</h3>
+                            <p>Sağlık Kurumu</p>
+                        </div>
+                    </div>
+                    <div class="reference-content">
+                        <p>"Kurumsal kimlik tasarımımız ve web sitemiz sayesinde hasta memnuniyetimiz %40 arttı. Profesyonel yaklaşım ve zamanında teslimat için teşekkürler."</p>
+                        <div class="reference-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5/5</span>
+                        </div>
+                    </div>
+                    <div class="reference-footer">
+                        <p>- Dr. Ayşe Yıldız, Müdür</p>
+                    </div>
                 </div>
             </div>
         </div>

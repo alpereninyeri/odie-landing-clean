@@ -93,54 +93,50 @@ async function handleFirstMessage() {
     chatInput.disabled = true;
     sendBtn.disabled = true;
     
-    // Switch to chat interface with animation
+    // Get elements
     const landingPage = document.getElementById('landing-page');
     const chatInterface = document.getElementById('chat-interface');
-    const navLinks = document.getElementById('nav-links');
     
-    // Animate page exit
-    animatePageExit(() => {
-        landingPage.style.display = 'none';
-        chatInterface.style.display = 'flex';
+    // Start smooth transition animation
+    landingPage.classList.add('chat-transition');
+    
+    // Wait for landing page animation to complete
+    setTimeout(() => {
+        // Show chat interface
+        chatInterface.classList.add('show');
         
-        // Add chat slide up animation
-        setTimeout(() => {
-            chatInterface.classList.add('chat-interface');
-        }, 50);
-    });
-    
-    // Add user message to chat first
-    addMessage(message, true);
-    
-    // Show thinking indicator
-    const thinkingDiv = document.createElement('div');
-    thinkingDiv.className = 'message bot-message';
-    thinkingDiv.innerHTML = `
-        <div class="message-avatar">🤖</div>
-        <div class="message-content">
-            <div class="message-text">Düşünüyorum...</div>
-        </div>
-    `;
-    document.getElementById('chat-messages').appendChild(thinkingDiv);
-    
-    try {
+        // Add user message to chat first
+        addMessage(message, true);
+        
+        // Show thinking indicator
+        const thinkingDiv = document.createElement('div');
+        thinkingDiv.className = 'message bot-message';
+        thinkingDiv.innerHTML = `
+            <div class="message-avatar">🤖</div>
+            <div class="message-content">
+                <div class="message-text">Düşünüyorum...</div>
+            </div>
+        `;
+        document.getElementById('chat-messages').appendChild(thinkingDiv);
+        
         // Get response from N8N
-        const response = await sendToN8N(message);
+        sendToN8N(message).then(response => {
+            // Remove thinking indicator
+            thinkingDiv.remove();
+            
+            // Add bot response to chat
+            addMessage(response);
+            
+        }).catch(error => {
+            // Remove thinking indicator
+            thinkingDiv.remove();
+            addMessage('Üzgünüm, bir hata oluştu. Lütfen tekrar deneyin.');
+        }).finally(() => {
+            // Focus chat input
+            document.getElementById('chat-input-chat').focus();
+        });
         
-        // Remove thinking indicator
-        thinkingDiv.remove();
-        
-        // Add bot response to chat
-        addMessage(response);
-        
-    } catch (error) {
-        // Remove thinking indicator
-        thinkingDiv.remove();
-        addMessage('Üzgünüm, bir hata oluştu. Lütfen tekrar deneyin.');
-    } finally {
-        // Focus chat input
-        document.getElementById('chat-input-chat').focus();
-    }
+    }, 400); // Half of the transition duration
 }
 
 // Add message to chat
@@ -367,22 +363,7 @@ async function handleSendMessage() {
 }
 
 // Page transition functions
-function animatePageExit(callback) {
-    const currentPage = document.querySelector('.landing-page, .chat-interface');
-    if (currentPage) {
-        currentPage.classList.add('page-exit');
-        setTimeout(callback, 600);
-    } else {
-        callback();
-    }
-}
-
-function animatePageEnter() {
-    const currentPage = document.querySelector('.landing-page, .chat-interface');
-    if (currentPage) {
-        currentPage.classList.add('page-enter');
-    }
-}
+// Removed old animation functions - now using CSS transitions
 
 // Show action text animation
 function showActionText() {

@@ -97,9 +97,15 @@ async function handleFirstMessage() {
     const landingPage = document.getElementById('landing-page');
     const chatInterface = document.getElementById('chat-interface');
     
-    // Hide landing page and show chat
-    landingPage.style.display = 'none';
-    chatInterface.style.display = 'flex';
+    // Start fade out animation
+    landingPage.classList.add('fade-out');
+    
+    // Wait for fade out to complete, then show chat
+    setTimeout(() => {
+        landingPage.style.display = 'none';
+        chatInterface.style.display = 'flex';
+        chatInterface.classList.add('show');
+    }, 500);
     
     // Add user message to chat first
     addMessage(message, true);

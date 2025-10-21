@@ -23,8 +23,12 @@ body {
     align-items: center;
     position: relative;
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.5s ease-out;
     z-index: 1;
+}
+
+.landing-page.fade-out {
+    opacity: 0;
 }
 
 /* Landing Page Chat Transition */
@@ -320,7 +324,16 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+.chat-interface.show {
+    opacity: 1;
 }
 
 /* Chat Header */

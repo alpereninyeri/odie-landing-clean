@@ -83,10 +83,12 @@ function focusChat() {
 
 // Handle first message and switch to chat interface
 async function handleFirstMessage() {
+    console.log('handleFirstMessage called');
     const chatInput = document.getElementById('chat-input');
     const sendBtn = document.getElementById('send-btn');
     const message = chatInput.value.trim();
     
+    console.log('Message:', message);
     if (!message) return;
     
     // Disable input and button
@@ -403,7 +405,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Landing page send button event listener
     const sendBtn = document.getElementById('send-btn');
-    sendBtn.addEventListener('click', handleFirstMessage);
+    console.log('Send button found:', sendBtn);
+    sendBtn.addEventListener('click', function(e) {
+        console.log('Send button clicked');
+        e.preventDefault();
+        handleFirstMessage();
+    });
     
     // Landing page enter key to send message
     const chatInput = document.getElementById('chat-input');

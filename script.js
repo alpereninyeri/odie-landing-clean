@@ -67,13 +67,21 @@ async function handleFirstMessage() {
     chatInput.disabled = true;
     sendBtn.disabled = true;
     
-    // Switch to chat interface
+    // Switch to chat interface with animation
     const landingPage = document.getElementById('landing-page');
     const chatInterface = document.getElementById('chat-interface');
     const navLinks = document.getElementById('nav-links');
     
-    landingPage.style.display = 'none';
-    chatInterface.style.display = 'flex';
+    // Animate page exit
+    animatePageExit(() => {
+        landingPage.style.display = 'none';
+        chatInterface.style.display = 'flex';
+        
+        // Add chat slide up animation
+        setTimeout(() => {
+            chatInterface.classList.add('chat-interface');
+        }, 50);
+    });
     
     // Show navigation links after a short delay
     setTimeout(() => {
@@ -136,7 +144,19 @@ function addMessage(content, isUser = false) {
     messageContent.appendChild(messageText);
     messageDiv.appendChild(avatar);
     messageDiv.appendChild(messageContent);
+    
+    // Add animation
+    messageDiv.style.opacity = '0';
+    messageDiv.style.transform = 'translateY(20px)';
+    
     chatMessages.appendChild(messageDiv);
+    
+    // Trigger animation
+    setTimeout(() => {
+        messageDiv.style.transition = 'all 0.5s ease-out';
+        messageDiv.style.opacity = '1';
+        messageDiv.style.transform = 'translateY(0)';
+    }, 50);
     
     // Scroll to bottom
     chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -289,8 +309,29 @@ async function handleSendMessage() {
     }
 }
 
+// Page transition functions
+function animatePageExit(callback) {
+    const currentPage = document.querySelector('.landing-page, .chat-interface');
+    if (currentPage) {
+        currentPage.classList.add('page-exit');
+        setTimeout(callback, 600);
+    } else {
+        callback();
+    }
+}
+
+function animatePageEnter() {
+    const currentPage = document.querySelector('.landing-page, .chat-interface');
+    if (currentPage) {
+        currentPage.classList.add('page-enter');
+    }
+}
+
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
+    // Add page enter animation
+    animatePageEnter();
+    
     // Start typing animation after a short delay
     setTimeout(typeText, 1000);
     
@@ -323,23 +364,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Mouse Trail Effect
+    // Add some interactive effects
     document.addEventListener('mousemove', function(e) {
-        // Create trail element
-        const trail = document.createElement('div');
-        trail.className = 'mouse-trail';
-        trail.style.left = e.clientX + 'px';
-        trail.style.top = e.clientY + 'px';
-        
-        document.body.appendChild(trail);
-        
-        // Remove trail after animation
-        setTimeout(() => {
-            if (trail.parentNode) {
-                trail.parentNode.removeChild(trail);
-            }
-        }, 1000);
-        
         const cursor = document.querySelector('.cursor');
         if (cursor) {
             // Subtle cursor animation based on mouse movement

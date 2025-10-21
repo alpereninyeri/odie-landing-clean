@@ -11,29 +11,84 @@ body {
     color: #FFFFFF;
     height: 100vh;
     overflow: hidden;
-    cursor: none;
 }
 
-/* Mouse Trail Effect */
-.mouse-trail {
-    position: fixed;
-    width: 4px;
-    height: 4px;
-    background: rgba(233, 78, 27, 0.3);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    animation: fadeOut 1s ease-out forwards;
+/* Page Transitions */
+.page-enter {
+    animation: pageEnter 0.6s ease-out forwards;
 }
 
-@keyframes fadeOut {
+.page-exit {
+    animation: pageExit 0.6s ease-in forwards;
+}
+
+@keyframes pageEnter {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pageExit {
     0% {
         opacity: 1;
-        transform: scale(1);
+        transform: translateY(0);
     }
     100% {
         opacity: 0;
-        transform: scale(0.5);
+        transform: translateY(-30px);
+    }
+}
+
+/* Chat Interface Animations */
+.chat-interface {
+    animation: chatSlideUp 0.8s ease-out forwards;
+}
+
+@keyframes chatSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Message Animations */
+.message {
+    animation: messageSlideIn 0.5s ease-out forwards;
+}
+
+@keyframes messageSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Input Container Animation */
+.input-container {
+    animation: inputSlideUp 0.6s ease-out 0.3s both;
+}
+
+@keyframes inputSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 

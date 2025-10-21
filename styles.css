@@ -113,35 +113,33 @@ body {
 .landing-nav {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-bottom: 30px;
+    gap: 30px;
+    margin-bottom: 40px;
     padding: 0 20px;
 }
 
 .landing-nav .nav-link {
     color: #888;
     text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 400;
     transition: all 0.3s ease;
-    padding: 8px 16px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0;
+    background: none;
+    border: none;
 }
 
 .landing-nav .nav-link:hover {
     color: #E94E1B;
-    background: rgba(233, 78, 27, 0.1);
-    border-color: rgba(233, 78, 27, 0.3);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
 
 /* Input Container */
 .input-container {
     width: 100%;
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
+    margin-top: 20px;
 }
 
 .input-wrapper {

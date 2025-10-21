@@ -26,7 +26,7 @@ const handler = async (req, res) => {
         console.log('Chat history length:', chatHistory ? chatHistory.length : 0);
         
         // N8N Webhook URL
-        const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || 'https://kilicphoto.app.n8n.cloud/webhook/odie-chat';
+        const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || 'image.pnghttps://kilicphoto.app.n8n.cloud/webhook-test/odie-chat';
         
         // Prepare the request to N8N
         const n8nPayload = {

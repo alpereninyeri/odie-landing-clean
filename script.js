@@ -1,6 +1,15 @@
 // N8N Webhook Configuration
 const N8N_WEBHOOK_URL = '/api/odie';
 
+// Professional intro messages
+const introMessages = [
+    "Merhaba! Ben Odie, Kılıç Agency'nin AI asistanıyım. Size nasıl yardımcı olabilirim?",
+    "Fotoğraf ve video prodüksiyon hizmetlerimiz hakkında bilgi almak ister misiniz?",
+    "Kreatif projeleriniz için en uygun çözümleri birlikte bulalım!",
+    "Sosyal medya içerikleri, kurumsal videolar ve daha fazlası...",
+    "Hangi konuda yardıma ihtiyacınız var?"
+];
+
 // Typing animation for dynamic subtitle text
 const typingTexts = [
     "Kılıç Agency'nin yaratıcı zekâsıyım.",
@@ -91,14 +100,30 @@ async function handleFirstMessage() {
     // Add user message to chat
     addMessage(message, true);
     
+    // Show thinking indicator
+    const thinkingDiv = document.createElement('div');
+    thinkingDiv.className = 'message bot-message';
+    thinkingDiv.innerHTML = `
+        <div class="message-avatar">🤖</div>
+        <div class="message-content">
+            <div class="message-text">Düşünüyorum...</div>
+        </div>
+    `;
+    document.getElementById('chat-messages').appendChild(thinkingDiv);
+    
     try {
         // Get response from N8N
         const response = await sendToN8N(message);
+        
+        // Remove thinking indicator
+        thinkingDiv.remove();
         
         // Add bot response to chat
         addMessage(response);
         
     } catch (error) {
+        // Remove thinking indicator
+        thinkingDiv.remove();
         addMessage('Üzgünüm, bir hata oluştu. Lütfen tekrar deneyin.');
     } finally {
         // Focus chat input
@@ -115,7 +140,7 @@ function addMessage(content, isUser = false) {
     // Create avatar
     const avatar = document.createElement('div');
     avatar.className = 'message-avatar';
-    avatar.textContent = isUser ? 'U' : '';
+    avatar.textContent = isUser ? 'U' : '🤖';
     
     // Create message content
     const messageContent = document.createElement('div');
@@ -123,7 +148,6 @@ function addMessage(content, isUser = false) {
     
     const messageText = document.createElement('div');
     messageText.className = 'message-text';
-    messageText.textContent = content;
     
     messageContent.appendChild(messageText);
     messageDiv.appendChild(avatar);
@@ -142,8 +166,36 @@ function addMessage(content, isUser = false) {
         messageDiv.style.transform = 'translateY(0)';
     }, 50);
     
+    // Type message word by word for bot messages
+    if (!isUser) {
+        typeMessageWordByWord(messageText, content);
+    } else {
+        messageText.textContent = content;
+    }
+    
     // Scroll to bottom
     chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// Type message word by word
+function typeMessageWordByWord(element, text) {
+    const words = text.split(' ');
+    let currentWordIndex = 0;
+    
+    function typeNextWord() {
+        if (currentWordIndex < words.length) {
+            const word = words[currentWordIndex];
+            element.textContent += (currentWordIndex > 0 ? ' ' : '') + word;
+            currentWordIndex++;
+            
+            // Random delay between words (50-150ms)
+            const delay = Math.random() * 100 + 50;
+            setTimeout(typeNextWord, delay);
+        }
+    }
+    
+    // Start typing after a short delay
+    setTimeout(typeNextWord, 200);
 }
 
 // Show typing indicator
@@ -269,14 +321,30 @@ async function handleSendMessage() {
     // Clear input
     chatInput.value = '';
     
+    // Show thinking indicator
+    const thinkingDiv = document.createElement('div');
+    thinkingDiv.className = 'message bot-message';
+    thinkingDiv.innerHTML = `
+        <div class="message-avatar">🤖</div>
+        <div class="message-content">
+            <div class="message-text">Düşünüyorum...</div>
+        </div>
+    `;
+    document.getElementById('chat-messages').appendChild(thinkingDiv);
+    
     try {
         // Get response from N8N
         const response = await sendToN8N(message);
+        
+        // Remove thinking indicator
+        thinkingDiv.remove();
         
         // Add bot response to chat
         addMessage(response);
         
     } catch (error) {
+        // Remove thinking indicator
+        thinkingDiv.remove();
         addMessage('Üzgünüm, bir hata oluştu. Lütfen tekrar deneyin.');
     } finally {
         // Re-enable input and button

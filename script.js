@@ -10,11 +10,28 @@ const introMessages = [
     "Hangi konuda yardıma ihtiyacınız var?"
 ];
 
-// Typing animation for dynamic subtitle text
+// 20 different dynamic subtitle texts
 const typingTexts = [
     "Kılıç Agency'nin yaratıcı zekâsıyım.",
     "Işık, kadraj ve fikirle ilgileniyorum.",
-    "Ne yapmak istersin?"
+    "Ne yapmak istersin?",
+    "Kreatif projelerin için buradayım.",
+    "Fotoğraf ve video prodüksiyon uzmanıyım.",
+    "Sosyal medya içerikleri konusunda yardımcı olabilirim.",
+    "Kurumsal videolar ve reklam filmleri alanında deneyimliyim.",
+    "Etkinlik fotoğrafçılığı ve video çekimi yapıyoruz.",
+    "Ürün fotoğrafçılığı ve e-ticaret görselleri hazırlıyoruz.",
+    "Logo tasarımı ve kurumsal kimlik çalışmaları yapıyoruz.",
+    "Web tasarımı ve dijital pazarlama hizmetleri sunuyoruz.",
+    "İçerik üretimi ve sosyal medya yönetimi konularında uzmanız.",
+    "Kurumsal etkinlikler ve organizasyonlar için çözümler üretiyoruz.",
+    "Dijital dünyada markanızı öne çıkaracak içerikler hazırlıyoruz.",
+    "Profesyonel fotoğraf ve video çekimi hizmetleri veriyoruz.",
+    "Kreatif fikirler ve yaratıcı çözümler konusunda uzmanız.",
+    "Markanızın hikayesini görsel olarak anlatıyoruz.",
+    "Dijital pazarlama stratejileri ve içerik planlaması yapıyoruz.",
+    "Kurumsal tanıtım filmleri ve reklam videoları üretiyoruz.",
+    "Sosyal medya platformları için özel içerikler hazırlıyoruz."
 ];
 
 let currentTextIndex = 0;
@@ -372,6 +389,28 @@ function animatePageEnter() {
     }
 }
 
+// Show action text animation
+function showActionText() {
+    const actionText = document.getElementById('action-text');
+    if (actionText) {
+        actionText.style.opacity = '0';
+        actionText.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            actionText.style.transition = 'all 0.5s ease-out';
+            actionText.style.opacity = '1';
+            actionText.style.transform = 'translateY(0)';
+        }, 1000);
+        
+        // Hide after 4 seconds
+        setTimeout(() => {
+            actionText.style.transition = 'all 0.5s ease-out';
+            actionText.style.opacity = '0';
+            actionText.style.transform = 'translateY(-20px)';
+        }, 5000);
+    }
+}
+
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
     // Add page enter animation
@@ -379,6 +418,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Start typing animation after a short delay
     setTimeout(typeText, 100);
+    
+    // Show action text animation
+    setTimeout(showActionText, 2000);
     
     // Focus chat input after typing animation
     setTimeout(focusChat, 500);

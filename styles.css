@@ -71,6 +71,44 @@ body {
     51%, 100% { opacity: 0; }
 }
 
+/* Action Text */
+.action-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-out;
+}
+
+.action-arrow {
+    font-size: 18px;
+    color: #E94E1B;
+    font-weight: bold;
+    animation: bounce 2s infinite;
+}
+
+.action-message {
+    font-size: 14px;
+    color: #888;
+    font-weight: 500;
+    font-style: italic;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(0);
+    }
+    40% {
+        transform: translateX(5px);
+    }
+    60% {
+        transform: translateX(3px);
+    }
+}
+
 /* Input Container */
 .input-container {
     width: 100%;
@@ -376,6 +414,21 @@ body {
         transform: translateY(-10px);
         opacity: 1;
     }
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.copyright {
+    font-size: 12px;
+    color: #666;
+    font-weight: 300;
 }
 
 /* Responsive Design */

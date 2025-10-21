@@ -355,7 +355,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 60px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     padding: 20px 24px;
     background: transparent;
     backdrop-filter: none;
@@ -364,7 +364,7 @@ body {
     position: relative;
     opacity: 1;
     visibility: visible;
-    margin-top: 70px;
+    margin-top: 0;
 }
 
 .header-left {

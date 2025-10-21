@@ -104,7 +104,6 @@ async function handleFirstMessage() {
     setTimeout(() => {
         // Show chat interface
         chatInterface.classList.add('show');
-        console.log('Chat interface shown:', chatInterface.classList.contains('show'));
         
         // Add user message to chat first
         addMessage(message, true);
@@ -314,12 +313,10 @@ async function sendToN8N(message) {
 
 // Handle send message
 async function handleSendMessage() {
-    console.log('handleSendMessage called');
     const chatInput = document.getElementById('chat-input-chat');
     const sendBtn = document.getElementById('send-btn-chat');
     const message = chatInput.value.trim();
     
-    console.log('Message:', message);
     if (!message) return;
     
     // Disable input and button

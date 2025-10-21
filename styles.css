@@ -255,7 +255,7 @@ body {
 
 /* Chat Interface */
 .chat-interface {
-    display: none;
+    display: flex;
     flex-direction: column;
     min-height: 100vh;
     background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
@@ -263,12 +263,13 @@ body {
     opacity: 0;
     transform: translateY(100vh);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    visibility: hidden;
 }
 
 .chat-interface.show {
-    display: flex;
     opacity: 1;
     transform: translateY(0);
+    visibility: visible;
 }
 
 /* Chat Header */

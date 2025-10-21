@@ -1,5 +1,4 @@
-// N8N Webhook Handler for Odie AI Assistant
-module.exports = async function handler(req, res) {
+const handler = async (req, res) => {
     // CORS headers
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -26,7 +25,7 @@ module.exports = async function handler(req, res) {
         console.log('Received message:', message);
         console.log('Chat history length:', chatHistory ? chatHistory.length : 0);
         
-        // N8N Webhook URL - Replace with your actual N8N webhook URL
+        // N8N Webhook URL
         const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || 'https://your-n8n-instance.com/webhook/odie';
         
         // Prepare the request to N8N
@@ -75,4 +74,6 @@ module.exports = async function handler(req, res) {
             timestamp: new Date().toISOString()
         });
     }
-}
+};
+
+module.exports = handler;

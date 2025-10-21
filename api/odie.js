@@ -46,6 +46,7 @@ const handler = async (req, res) => {
         };
         
         console.log('Sending to N8N:', N8N_WEBHOOK_URL);
+        console.log('N8N Payload:', JSON.stringify(n8nPayload, null, 2));
         
         // Send request to N8N
         const n8nResponse = await fetch(N8N_WEBHOOK_URL, {
@@ -64,6 +65,7 @@ const handler = async (req, res) => {
         
         const n8nData = await n8nResponse.json();
         console.log('N8N Response:', n8nData);
+        console.log('N8N Response Status:', n8nResponse.status);
         
         // Return the response from N8N
         return res.status(200).json({

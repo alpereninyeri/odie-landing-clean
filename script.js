@@ -367,8 +367,7 @@ function showActionText() {
 
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
-    // Add page enter animation
-    animatePageEnter();
+    // Page enter animation removed
     
     // Start typing animation after a short delay
     setTimeout(typeText, 100);

@@ -258,7 +258,7 @@
             
             <div class="contact-form">
                 <h2 style="color: #E94E1B; margin-bottom: 30px; text-align: center;">Projenizi Anlatalım</h2>
-                <form>
+                <form id="contact-form">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Ad Soyad</label>
@@ -309,5 +309,41 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                company: formData.get('company'),
+                phone: formData.get('phone'),
+                service: formData.get('service'),
+                budget: formData.get('budget'),
+                message: formData.get('message')
+            };
+            
+            // Send to email (using a simple mailto link for now)
+            const subject = `Yeni İletişim Formu - ${data.name}`;
+            const body = `
+Ad Soyad: ${data.name}
+E-posta: ${data.email}
+Şirket: ${data.company || 'Belirtilmemiş'}
+Telefon: ${data.phone || 'Belirtilmemiş'}
+Hizmet: ${data.service}
+Bütçe: ${data.budget}
+Mesaj: ${data.message}
+            `;
+            
+            const mailtoLink = `mailto:info@kilicagency.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            alert('Mesajınız e-posta uygulamasında açılacak. Gönder butonuna basarak mesajınızı gönderebilirsiniz.');
+        });
+    </script>
 </body>
 </html>

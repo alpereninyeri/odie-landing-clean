@@ -82,39 +82,57 @@ function focusChat() {
 }
 
 // Handle first message and switch to chat interface
-function handleFirstMessage() {
-    console.log('Button clicked!');
+async function handleFirstMessage() {
     const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
     const message = chatInput.value.trim();
     
-    console.log('Message:', message);
-    if (!message) {
-        console.log('No message');
-        return;
-    }
+    if (!message) return;
     
-    console.log('Processing message...');
+    // Disable input and button
+    chatInput.disabled = true;
+    sendBtn.disabled = true;
     
-    // Get elements
+    // Switch to chat interface
     const landingPage = document.getElementById('landing-page');
     const chatInterface = document.getElementById('chat-interface');
     
-    console.log('Landing page:', landingPage);
-    console.log('Chat interface:', chatInterface);
-    
-    // Hide landing page
+    // Hide landing page and show chat
     landingPage.style.display = 'none';
-    
-    // Show chat interface
     chatInterface.style.display = 'flex';
-    chatInterface.style.opacity = '1';
-    chatInterface.style.transform = 'translateY(0)';
     
-    // Add user message to chat
+    // Add user message to chat first
     addMessage(message, true);
     
-    // Add bot response
-    addMessage('Merhaba! Nasıl yardımcı olabilirim?');
+    // Show thinking indicator
+    const thinkingDiv = document.createElement('div');
+    thinkingDiv.className = 'message bot-message';
+    thinkingDiv.innerHTML = `
+        <div class="message-avatar">🤖</div>
+        <div class="message-content">
+            <div class="message-text">Düşünüyorum...</div>
+        </div>
+    `;
+    document.getElementById('chat-messages').appendChild(thinkingDiv);
+    
+    try {
+        // Get response from N8N
+        const response = await sendToN8N(message);
+        
+        // Remove thinking indicator
+        thinkingDiv.remove();
+        
+        // Add bot response to chat
+        addMessage(response);
+        
+    } catch (error) {
+        // Remove thinking indicator
+        thinkingDiv.remove();
+        addMessage('Üzgünüm, bir hata oluştu. Lütfen tekrar deneyin.');
+    } finally {
+        // Focus chat input
+        document.getElementById('chat-input-chat').focus();
+    }
 }
 
 // Add message to chat
@@ -380,16 +398,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Landing page send button event listener
     const sendBtn = document.getElementById('send-btn');
-    console.log('Send button:', sendBtn);
-    if (sendBtn) {
-        sendBtn.addEventListener('click', function(e) {
-            console.log('Button clicked in event listener');
-            e.preventDefault();
-            handleFirstMessage();
-        });
-    } else {
-        console.error('Send button not found!');
-    }
+    sendBtn.addEventListener('click', handleFirstMessage);
     
     // Landing page enter key to send message
     const chatInput = document.getElementById('chat-input');

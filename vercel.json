@@ -19,13 +19,5 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "functions": {
-    "api/odie.js": {
-      "maxDuration": 30
-    }
-  },
-  "env": {
-    "N8N_WEBHOOK_URL": "@n8n_webhook_url"
-  }
+  ]
 }

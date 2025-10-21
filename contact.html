@@ -12,9 +12,42 @@
     <style>
         .contact-page {
             min-height: 100vh;
-            background: #000000;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
             color: #FFFFFF;
             padding: 60px 20px;
+        }
+        
+        .page-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding: 20px 0;
+        }
+        
+        .page-nav .nav-link {
+            color: #888;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .page-nav .nav-link:hover {
+            color: #E94E1B;
+            background: rgba(233, 78, 27, 0.1);
+            border-color: rgba(233, 78, 27, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .page-nav .nav-link.active {
+            color: #6366f1;
+            background: rgba(99, 102, 241, 0.1);
+            border-color: rgba(99, 102, 241, 0.3);
         }
         .contact-content {
             max-width: 800px;
@@ -181,12 +214,12 @@
 <body>
     <div class="contact-page page-enter">
         <div class="contact-content">
-            <a href="index.html" class="back-btn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Geri Dön
-            </a>
+            <div class="page-nav">
+                <a href="index.html" class="nav-link">Ana Sayfa</a>
+                <a href="portfolio.html" class="nav-link">Portfolyo</a>
+                <a href="references.html" class="nav-link">Referanslar</a>
+                <a href="contact.html" class="nav-link active">İletişim</a>
+            </div>
             
             <h1 style="font-size: 48px; margin-bottom: 20px; color: #E94E1B;">Bize Ulaşın</h1>
             <p style="font-size: 18px; color: #888; margin-bottom: 40px;">Projeleriniz için bizimle iletişime geçin</p>

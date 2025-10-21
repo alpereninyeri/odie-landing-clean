@@ -323,8 +323,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Add some interactive effects
+    // Mouse Trail Effect
     document.addEventListener('mousemove', function(e) {
+        // Create trail element
+        const trail = document.createElement('div');
+        trail.className = 'mouse-trail';
+        trail.style.left = e.clientX + 'px';
+        trail.style.top = e.clientY + 'px';
+        
+        document.body.appendChild(trail);
+        
+        // Remove trail after animation
+        setTimeout(() => {
+            if (trail.parentNode) {
+                trail.parentNode.removeChild(trail);
+            }
+        }, 1000);
+        
         const cursor = document.querySelector('.cursor');
         if (cursor) {
             // Subtle cursor animation based on mouse movement

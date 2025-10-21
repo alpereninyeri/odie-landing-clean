@@ -11,6 +11,30 @@ body {
     color: #FFFFFF;
     height: 100vh;
     overflow: hidden;
+    cursor: none;
+}
+
+/* Mouse Trail Effect */
+.mouse-trail {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: rgba(233, 78, 27, 0.3);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: fadeOut 1s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
 }
 
 /* Landing Page */
@@ -185,6 +209,25 @@ body {
     bottom: 20px;
     right: 20px;
     text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.instagram-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #E94E1B;
+    text-decoration: none;
+    font-size: 11px;
+    transition: all 0.3s ease;
+}
+
+.instagram-link:hover {
+    color: #FF6B35;
+    transform: scale(1.05);
 }
 
 .copyright {

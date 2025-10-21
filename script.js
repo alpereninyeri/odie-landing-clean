@@ -83,38 +83,22 @@ async function handleFirstMessage() {
         }, 50);
     });
     
-    // Show navigation links after a short delay
-    setTimeout(() => {
-        navLinks.style.display = 'flex';
-        navLinks.style.opacity = '0';
-        navLinks.style.transform = 'translateY(20px)';
-        
-        // Animate in
-        setTimeout(() => {
-            navLinks.style.transition = 'all 0.5s ease';
-            navLinks.style.opacity = '1';
-            navLinks.style.transform = 'translateY(0)';
-        }, 100);
-    }, 1000);
+    // Show navigation links immediately
+    navLinks.style.display = 'flex';
+    navLinks.style.opacity = '1';
+    navLinks.style.transform = 'translateY(0)';
     
     // Add user message to chat
     addMessage(message, true);
-    
-    // Show typing indicator
-    showTypingIndicator();
     
     try {
         // Get response from N8N
         const response = await sendToN8N(message);
         
-        // Hide typing indicator
-        hideTypingIndicator();
-        
         // Add bot response to chat
         addMessage(response);
         
     } catch (error) {
-        hideTypingIndicator();
         addMessage('Üzgünüm, bir hata oluştu. Lütfen tekrar deneyin.');
     } finally {
         // Focus chat input
@@ -285,21 +269,14 @@ async function handleSendMessage() {
     // Clear input
     chatInput.value = '';
     
-    // Show typing indicator
-    showTypingIndicator();
-    
     try {
         // Get response from N8N
         const response = await sendToN8N(message);
-        
-        // Hide typing indicator
-        hideTypingIndicator();
         
         // Add bot response to chat
         addMessage(response);
         
     } catch (error) {
-        hideTypingIndicator();
         addMessage('Üzgünüm, bir hata oluştu. Lütfen tekrar deneyin.');
     } finally {
         // Re-enable input and button
@@ -333,10 +310,10 @@ document.addEventListener('DOMContentLoaded', function() {
     animatePageEnter();
     
     // Start typing animation after a short delay
-    setTimeout(typeText, 1000);
+    setTimeout(typeText, 100);
     
     // Focus chat input after typing animation
-    setTimeout(focusChat, 2000);
+    setTimeout(focusChat, 500);
     
     // Landing page send button event listener
     const sendBtn = document.getElementById('send-btn');

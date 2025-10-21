@@ -24,6 +24,7 @@ body {
     position: relative;
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
 }
 
 /* Landing Page Chat Transition */
@@ -259,11 +260,15 @@ body {
     flex-direction: column;
     min-height: 100vh;
     background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     opacity: 0;
     transform: translateY(100vh);
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     visibility: hidden;
+    z-index: 1000;
 }
 
 .chat-interface.show {

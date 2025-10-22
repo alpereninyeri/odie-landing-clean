@@ -231,7 +231,7 @@
                         <div class="method-icon">📧</div>
                         <div class="method-content">
                             <h3>E-posta</h3>
-                            <p>info@kilicagency.com</p>
+                            <p>kilicphoto@gmail.com</p>
                             <span>24 saat içinde yanıt</span>
                         </div>
                     </div>
@@ -338,12 +338,16 @@ Bütçe: ${data.budget}
 Mesaj: ${data.message}
             `;
             
-            const mailtoLink = `mailto:info@kilicagency.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            const mailtoLink = `mailto:kilicphoto@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             window.location.href = mailtoLink;
             
             // Show success message
             alert('Mesajınız e-posta uygulamasında açılacak. Gönder butonuna basarak mesajınızı gönderebilirsiniz.');
         });
     </script>
+    
+    <div class="footer">
+        <p class="copyright">© 2025 Kılıç Agency. Tüm hakları saklıdır. | Yapay zeka (Odie) ile geliştirilmiştir.</p>
+    </div>
 </body>
 </html>

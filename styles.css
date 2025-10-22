@@ -2071,12 +2071,17 @@ body.dark-theme .v2-form-group textarea:focus {
     transform: translateX(-50%);
     text-align: center;
     animation: fadeIn 1.8s ease-out 1.5s both;
+    width: 100%;
+    max-width: 800px;
+    padding: 0 20px;
 }
 
 .copyright {
-        font-size: 12px;
+    font-size: 12px;
     color: #666;
     font-weight: 300;
+    text-align: center;
+    margin: 0;
 }
 
 /* Responsive Design */

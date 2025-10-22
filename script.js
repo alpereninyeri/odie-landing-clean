@@ -10,9 +10,8 @@ const introMessages = [
     "Hangi konuda yardıma ihtiyacınız var?"
 ];
 
-// 20 different dynamic subtitle texts
+// 20 different dynamic subtitle texts (randomized)
 const typingTexts = [
-    "Dinliyorum...",
     "Ne yapmak istersin?",
     "Kreatif projelerin için buradayım.",
     "Fotoğraf ve video prodüksiyon uzmanıyım.",
@@ -31,13 +30,15 @@ const typingTexts = [
     "Dijital pazarlama stratejileri ve içerik planlaması yapıyoruz.",
     "Kurumsal tanıtım filmleri ve reklam videoları üretiyoruz.",
     "Sosyal medya platformları için özel içerikler hazırlıyoruz.",
-    "Kılıç Agency'nin yaratıcı zekâsıyım."
+    "Kılıç Agency'nin yaratıcı zekâsıyım.",
+    "Hangi konuda yardıma ihtiyacınız var?"
 ];
 
-let currentTextIndex = 0;
+let currentTextIndex = Math.floor(Math.random() * typingTexts.length);
 let currentCharIndex = 0;
 let isDeleting = false;
 let typingSpeed = 100;
+let isListening = false;
 let deletingSpeed = 50;
 let pauseTime = 2000;
 
@@ -55,7 +56,7 @@ function typeText() {
         
         if (currentCharIndex === 0) {
             isDeleting = false;
-            currentTextIndex = (currentTextIndex + 1) % typingTexts.length;
+            currentTextIndex = Math.floor(Math.random() * typingTexts.length);
             setTimeout(typeText, 500);
             return;
         }
@@ -412,6 +413,41 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Focus chat input after typing animation
     setTimeout(focusChat, 500);
+    
+    // Add keyboard listener for input focus
+    const chatInput = document.getElementById('chat-input');
+    if (chatInput) {
+        chatInput.addEventListener('focus', function() {
+            if (!isListening) {
+                isListening = true;
+                const typingElement = document.getElementById('typing-text');
+                if (typingElement) {
+                    typingElement.textContent = 'Dinliyorum...';
+                }
+            }
+        });
+        
+        chatInput.addEventListener('blur', function() {
+            if (isListening && chatInput.value.trim() === '') {
+                isListening = false;
+                // Restart typing animation
+                currentTextIndex = Math.floor(Math.random() * typingTexts.length);
+                currentCharIndex = 0;
+                isDeleting = false;
+                typeText();
+            }
+        });
+        
+        chatInput.addEventListener('input', function() {
+            if (!isListening) {
+                isListening = true;
+                const typingElement = document.getElementById('typing-text');
+                if (typingElement) {
+                    typingElement.textContent = 'Dinliyorum...';
+                }
+            }
+        });
+    }
     
     // Landing page send button event listener
     const sendBtn = document.getElementById('send-btn');

@@ -817,17 +817,50 @@ body.dark-theme {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 20px 24px;
+    padding: 12px 20px;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(20px);
     z-index: 1000;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    min-height: 50px;
 }
 
 .header-left {
     display: flex;
     align-items: center;
     gap: 12px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.chat-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.chat-nav-btn:hover {
+    background: rgba(255, 107, 53, 0.1);
+    color: #FF6B35;
+    transform: translateY(-1px);
+}
+
+.chat-nav-btn:active {
+    transform: translateY(0);
 }
 
 .header-logo {

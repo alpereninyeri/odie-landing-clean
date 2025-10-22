@@ -208,20 +208,18 @@ function addMessage(content, isUser = false) {
         messageText.innerHTML = parseMarkdown(content);
     }
     
-    // Scroll to bottom immediately
-    setTimeout(() => {
+    // Aggressive scroll to bottom
+    const scrollToBottom = () => {
         chatMessages.scrollTop = chatMessages.scrollHeight;
-    }, 50);
+    };
     
-    // Additional scroll after typing animation
-    setTimeout(() => {
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }, 500);
-    
-    // Force scroll to bottom
-    setTimeout(() => {
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }, 1000);
+    // Multiple scroll attempts
+    scrollToBottom();
+    setTimeout(scrollToBottom, 50);
+    setTimeout(scrollToBottom, 100);
+    setTimeout(scrollToBottom, 200);
+    setTimeout(scrollToBottom, 500);
+    setTimeout(scrollToBottom, 1000);
 }
 
 // Type message word by word with Markdown support
@@ -704,6 +702,51 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 handleSendMessage();
             }
+        });
+    }
+    
+    // Chat navigation buttons
+    const backToHomeBtn = document.getElementById('back-to-home');
+    const newChatBtn = document.getElementById('new-chat');
+    const themeToggleChatBtn = document.getElementById('theme-toggle-chat');
+    
+    if (backToHomeBtn) {
+        backToHomeBtn.addEventListener('click', function() {
+            // Switch back to landing page
+            const landingPage = document.getElementById('landing-page');
+            const chatInterface = document.getElementById('chat-interface');
+            
+            chatInterface.style.display = 'none';
+            chatInterface.classList.remove('show');
+            landingPage.style.display = 'flex';
+            landingPage.classList.remove('fade-out');
+        });
+    }
+    
+    if (newChatBtn) {
+        newChatBtn.addEventListener('click', function() {
+            // Clear chat messages
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.innerHTML = '';
+            
+            // Clear chat history
+            chatHistory.length = 0;
+            
+            // Focus input
+            const chatInput = document.getElementById('chat-input-chat');
+            if (chatInput) {
+                chatInput.focus();
+            }
+        });
+    }
+    
+    if (themeToggleChatBtn) {
+        themeToggleChatBtn.addEventListener('click', function() {
+            const body = document.body;
+            const isDark = body.classList.contains('dark-theme');
+            
+            body.classList.toggle('dark-theme');
+            localStorage.setItem('odie_theme', isDark ? 'light' : 'dark');
         });
     }
     

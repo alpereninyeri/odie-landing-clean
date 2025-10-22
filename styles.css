@@ -92,7 +92,6 @@ body {
     font-size: 2.875rem;
     color: #fff;
     opacity: 0.9;
-    animation: breathe 3s ease-in-out infinite;
     margin-right: 12px;
     letter-spacing: 3px;
 }
@@ -105,7 +104,6 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-shadow: 0 0 20px rgba(233, 78, 27, 0.2);
-    animation: breathe 3s ease-in-out infinite;
     backdrop-filter: blur(5px);
     letter-spacing: 4px;
 }
@@ -113,10 +111,10 @@ body {
 @keyframes breathe {
     0%, 100% { 
         transform: scale(1);
-        opacity: 0.95;
+        opacity: 0.98;
     }
     50% { 
-        transform: scale(1.005);
+        transform: scale(1.001);
         opacity: 1;
     }
 }
@@ -163,7 +161,6 @@ body {
     font-size: 1.2rem;
     color: #888;
     font-weight: 400;
-    animation: breathe 3s ease-in-out infinite;
 }
 
 .cursor {
@@ -172,7 +169,7 @@ body {
     height: 1.2rem;
     background: #E94E1B;
     margin-left: 2px;
-    animation: blink 1s infinite, breathe 3s ease-in-out infinite;
+    animation: blink 1s infinite;
 }
 
 @keyframes blink {
@@ -475,9 +472,8 @@ body {
 }
 
 .input-wrapper:hover {
-    animation: pulse 2s ease-in-out infinite;
     border-color: rgba(233, 78, 27, 0.3);
-    box-shadow: 0 8px 30px rgba(233, 78, 27, 0.2);
+    box-shadow: 0 4px 15px rgba(233, 78, 27, 0.1);
 }
 
 .input-wrapper:focus-within {
@@ -523,9 +519,8 @@ body {
 }
 
 .send-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(255, 140, 80, 0.3);
-    animation: pulse 1.5s ease-in-out infinite;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(255, 140, 80, 0.2);
 }
 
 .send-button:active {

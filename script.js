@@ -411,8 +411,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show action text animation
     setTimeout(showActionText, 2000);
     
-    // Focus chat input after typing animation
-    setTimeout(focusChat, 500);
+    // Focus chat input immediately
+    setTimeout(focusChat, 100);
     
     // Add keyboard listener for input focus
     const chatInput = document.getElementById('chat-input');

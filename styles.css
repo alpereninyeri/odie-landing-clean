@@ -1601,12 +1601,12 @@ body.dark-theme .v2-footer {
 
 /* Light theme overrides */
 body:not(.dark-theme) {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background: #ffffff;
     color: #2c3e50;
 }
 
 body:not(.dark-theme) .landing-page {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background: #ffffff;
 }
 
 body:not(.dark-theme) .title-light {
@@ -1618,7 +1618,7 @@ body:not(.dark-theme) .typing-text {
 }
 
 body:not(.dark-theme) .chat-interface {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background: #ffffff;
 }
 
 body:not(.dark-theme) .chat-header {

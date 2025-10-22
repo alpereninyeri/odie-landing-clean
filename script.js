@@ -180,6 +180,15 @@ function addMessage(content, isUser = false) {
     // Type message word by word for bot messages
     if (!isUser) {
         typeMessageWordByWord(messageText, content);
+        
+        // Add feedback buttons for bot messages
+        const messageId = 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        messageDiv.setAttribute('data-message-id', messageId);
+        
+        // Add feedback buttons after typing is complete
+        setTimeout(() => {
+            addFeedbackButtons(messageDiv, messageId);
+        }, content.length * 50 + 1000); // After typing animation
     } else {
         messageText.textContent = content;
     }
@@ -401,8 +410,109 @@ function showActionText() {
     }
 }
 
+// V2 Navigation Functions
+function initV2Navigation() {
+    const hamburger = document.getElementById('v2-hamburger');
+    const navLinks = document.querySelector('.v2-nav-links');
+    
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        const links = navLinks.querySelectorAll('.v2-nav-link');
+        links.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    }
+}
+
+// V2 Feedback System
+function addFeedbackButtons(messageElement, messageId) {
+    const feedbackContainer = document.createElement('div');
+    feedbackContainer.className = 'v2-feedback-container';
+    feedbackContainer.innerHTML = `
+        <button class="v2-feedback-btn v2-like-btn" data-rating="like">
+            👍
+        </button>
+        <button class="v2-feedback-btn v2-dislike-btn" data-rating="dislike">
+            👎
+        </button>
+    `;
+    
+    // Add event listeners
+    const likeBtn = feedbackContainer.querySelector('.v2-like-btn');
+    const dislikeBtn = feedbackContainer.querySelector('.v2-dislike-btn');
+    
+    likeBtn.addEventListener('click', () => handleFeedback(messageId, 'like', likeBtn, dislikeBtn));
+    dislikeBtn.addEventListener('click', () => handleFeedback(messageId, 'dislike', likeBtn, dislikeBtn));
+    
+    messageElement.appendChild(feedbackContainer);
+}
+
+function handleFeedback(messageId, rating, likeBtn, dislikeBtn) {
+    // Store feedback in localStorage
+    const feedback = {
+        messageId: messageId,
+        rating: rating,
+        timestamp: Date.now(),
+        conversationId: 'current'
+    };
+    
+    let feedbackArray = JSON.parse(localStorage.getItem('odie_feedback') || '[]');
+    feedbackArray.push(feedback);
+    localStorage.setItem('odie_feedback', JSON.stringify(feedbackArray));
+    
+    // Visual feedback
+    if (rating === 'like') {
+        likeBtn.classList.add('v2-selected');
+        dislikeBtn.disabled = true;
+    } else {
+        dislikeBtn.classList.add('v2-selected');
+        likeBtn.disabled = true;
+    }
+    
+    // Disable both buttons
+    likeBtn.disabled = true;
+    dislikeBtn.disabled = true;
+}
+
+// V2 Scroll to Top
+function initScrollToTop() {
+    const scrollBtn = document.getElementById('v2-scroll-to-top');
+    
+    if (scrollBtn) {
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        });
+        
+        // Scroll to top when clicked
+        scrollBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+}
+
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize V2 Navigation
+    initV2Navigation();
+    
+    // Initialize V2 Scroll to Top
+    initScrollToTop();
     // Page enter animation removed
     
     // Start typing animation after a short delay

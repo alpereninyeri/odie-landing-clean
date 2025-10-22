@@ -12,6 +12,30 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- V2 Top Navigation -->
+    <nav class="v2-top-nav">
+        <div class="v2-nav-container">
+            <div class="v2-nav-logo">
+                <img src="logo.png" alt="Kılıç Agency" class="v2-logo-img">
+                <span class="v2-logo-text">Kılıç Agency</span>
+            </div>
+            <div class="v2-nav-links">
+                <a href="index.html" class="v2-nav-link active">Ana Sayfa</a>
+                <a href="about.html" class="v2-nav-link">Hakkımızda</a>
+                <a href="services.html" class="v2-nav-link">Hizmetler</a>
+                <a href="blog.html" class="v2-nav-link">Blog</a>
+                <a href="portfolio.html" class="v2-nav-link">Portfolyo</a>
+                <a href="references.html" class="v2-nav-link">Referanslar</a>
+                <a href="contact.html" class="v2-nav-link">İletişim</a>
+            </div>
+            <button class="v2-hamburger" id="v2-hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
     <!-- Landing Page -->
     <div class="landing-page" id="landing-page">
         <div class="landing-logo">
@@ -70,13 +94,7 @@
             </div>
         </div>
         
-        <!-- Navigation -->
-        <div class="chat-nav">
-            <a href="index.html" class="nav-link">Ana Sayfa</a>
-            <a href="portfolio.html" class="nav-link">Portfolyo</a>
-            <a href="references.html" class="nav-link">Referanslar</a>
-            <a href="contact.html" class="nav-link">İletişim</a>
-        </div>
+        <!-- Navigation removed - using top nav -->
         
         <!-- Input Container -->
         <div class="input-container">
@@ -90,6 +108,13 @@
             </div>
         </div>
     </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="v2-scroll-to-top" id="v2-scroll-to-top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M7 14L12 9L17 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
 
     <script src="script.js"></script>
 </body>

@@ -185,11 +185,13 @@ function addMessage(content, isUser = false) {
     
     // Scroll to bottom with smooth animation
     setTimeout(() => {
-        chatMessages.scrollTo({
-            top: chatMessages.scrollHeight,
-            behavior: 'smooth'
-        });
-    }, 100);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 50);
+    
+    // Additional scroll after typing animation
+    setTimeout(() => {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 500);
 }
 
 // Type message word by word
@@ -202,6 +204,10 @@ function typeMessageWordByWord(element, text) {
             const word = words[currentWordIndex];
             element.textContent += (currentWordIndex > 0 ? ' ' : '') + word;
             currentWordIndex++;
+            
+            // Scroll to bottom during typing
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.scrollTop = chatMessages.scrollHeight;
             
             // Random delay between words (50-150ms)
             const delay = Math.random() * 100 + 50;

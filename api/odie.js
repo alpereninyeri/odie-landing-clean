@@ -72,7 +72,7 @@ const handler = async (req, res) => {
         console.log('Chat history length:', chatHistory ? chatHistory.length : 0);
         
         // N8N Webhook URL
-        const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || 'https://kilicphoto.app.n8n.cloud/webhook/odie-chat';
+        const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || 'https://kilicphoto.app.n8n.cloud/webhook-test/odie-chat';
         
         // Test için basit response
         if (message === 'test') {
@@ -106,6 +106,17 @@ const handler = async (req, res) => {
         
         if (!n8nResponse.ok) {
             console.error('N8N Error:', n8nResponse.status, n8nResponse.statusText);
+            
+            // If N8N is not available, return a fallback response
+            if (n8nResponse.status === 404) {
+                return res.status(200).json({
+                    success: true,
+                    response: 'Merhaba! Şu anda Odie AI sistemimiz güncelleniyor. Size nasıl yardımcı olabilirim? Fotoğraf çekimi, pazarlama veya iş geliştirme konularında sorularınızı yanıtlayabilirim.',
+                    timestamp: new Date().toISOString(),
+                    fallback: true
+                });
+            }
+            
             throw new Error(`N8N request failed: ${n8nResponse.status}`);
         }
         

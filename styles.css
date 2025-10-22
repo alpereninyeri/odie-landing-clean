@@ -1097,6 +1097,12 @@ body.dark-theme .header-ai {
     backdrop-filter: blur(10px);
 }
 
+/* Markdown formatting in messages */
+.message-text strong {
+    font-weight: 700;
+    color: inherit;
+}
+
 .user-message .message-text {
     background: #FF6B35;
     color: white;

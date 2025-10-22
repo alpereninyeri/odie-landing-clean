@@ -150,6 +150,12 @@ async function handleFirstMessage() {
     }
 }
 
+// Parse Markdown formatting
+function parseMarkdown(text) {
+    // Convert **text** to <strong>text</strong>
+    return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+}
+
 // Add message to chat
 function addMessage(content, isUser = false) {
     const chatMessages = document.getElementById('chat-messages');
@@ -198,7 +204,8 @@ function addMessage(content, isUser = false) {
             addFeedbackButtons(messageDiv, messageId);
         }, content.length * 50 + 1000); // After typing animation
     } else {
-        messageText.textContent = content;
+        // For user messages, parse markdown and set innerHTML
+        messageText.innerHTML = parseMarkdown(content);
     }
     
     // Scroll to bottom immediately
@@ -217,15 +224,20 @@ function addMessage(content, isUser = false) {
     }, 1000);
 }
 
-// Type message word by word
+// Type message word by word with Markdown support
 function typeMessageWordByWord(element, text) {
     const words = text.split(' ');
     let currentWordIndex = 0;
+    let currentText = '';
     
     function typeNextWord() {
         if (currentWordIndex < words.length) {
             const word = words[currentWordIndex];
-            element.textContent += (currentWordIndex > 0 ? ' ' : '') + word;
+            currentText += (currentWordIndex > 0 ? ' ' : '') + word;
+            
+            // Parse markdown and set innerHTML
+            element.innerHTML = parseMarkdown(currentText);
+            
             currentWordIndex++;
             
             // Scroll to bottom during typing

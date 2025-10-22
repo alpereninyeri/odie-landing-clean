@@ -43,6 +43,11 @@
     filter: brightness(0) invert(1); /* Beyaz arka planda görünür hale getir */
 }
 
+/* Dark theme logo */
+body.dark-theme .v2-logo-img {
+    filter: none; /* Karanlık temada orijinal logo */
+}
+
 .v2-logo-text {
     font-size: 18px;
     font-weight: 600;
@@ -122,23 +127,27 @@
 }
 
 .v2-sun-icon {
-    opacity: 1;
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: rotate(180deg);
+    color: #FF6B35;
 }
 
 .v2-moon-icon {
-    opacity: 0;
-    transform: rotate(180deg);
+    opacity: 1;
+    transform: rotate(0deg);
+    color: #2c3e50;
 }
 
 .v2-theme-toggle.dark .v2-sun-icon {
-    opacity: 0;
-    transform: rotate(180deg);
+    opacity: 1;
+    transform: rotate(0deg);
+    color: #FF6B35;
 }
 
 .v2-theme-toggle.dark .v2-moon-icon {
-    opacity: 1;
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: rotate(180deg);
+    color: #2c3e50;
 }
 
 .v2-hamburger {
@@ -816,14 +825,41 @@ body {
     width: 32px;
     height: 32px;
     object-fit: contain;
+    filter: brightness(0) invert(1); /* Beyaz arka planda görünür hale getir */
 }
 
-.header-left h1 {
-    margin: 0;
-    font-size: 28px;
+/* Dark theme for chat header logo */
+body.dark-theme .header-logo {
+    filter: none; /* Karanlık temada orijinal logo */
+}
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.header-brand {
+    font-size: 16px;
     font-weight: 600;
     color: #2c3e50;
-    letter-spacing: 0.5px;
+    line-height: 1;
+}
+
+.header-ai {
+    font-size: 14px;
+    font-weight: 400;
+    color: #6c757d;
+    line-height: 1;
+}
+
+/* Dark theme for chat header */
+body.dark-theme .header-brand {
+    color: #ffffff;
+}
+
+body.dark-theme .header-ai {
+    color: #ccc;
 }
 
 
@@ -1030,11 +1066,15 @@ body {
     background: none;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    padding: 6px 12px;
+    padding: 8px;
     cursor: pointer;
-    font-size: 14px;
     transition: all 0.2s ease;
     opacity: 0.7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
 }
 
 .v2-feedback-btn:hover {
@@ -1447,6 +1487,23 @@ body.dark-theme .v2-footer {
     background: #000000;
 }
 
+/* Dark theme for feedback buttons */
+body.dark-theme .v2-feedback-btn {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+body.dark-theme .v2-feedback-btn:hover {
+    border-color: #FF6B35;
+    background: rgba(255, 107, 53, 0.2);
+}
+
+body.dark-theme .v2-feedback-btn.v2-selected {
+    background: #FF6B35;
+    border-color: #FF6B35;
+    color: white;
+}
+
 /* V2 Portfolio Grid */
 .v2-portfolio-grid {
     display: grid;
@@ -1525,6 +1582,15 @@ body.dark-theme .v2-portfolio-content p {
 
 body.dark-theme .v2-portfolio-image {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+}
+
+/* Blog images theme support */
+body.dark-theme .v2-blog-image {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1));
+}
+
+body.dark-theme .v2-blog-placeholder {
+    opacity: 0.3;
 }
 
 /* V2 References Grid */

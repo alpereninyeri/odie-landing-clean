@@ -183,8 +183,13 @@ function addMessage(content, isUser = false) {
         messageText.textContent = content;
     }
     
-    // Scroll to bottom
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+    // Scroll to bottom with smooth animation
+    setTimeout(() => {
+        chatMessages.scrollTo({
+            top: chatMessages.scrollHeight,
+            behavior: 'smooth'
+        });
+    }, 100);
 }
 
 // Type message word by word

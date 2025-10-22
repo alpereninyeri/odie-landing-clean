@@ -37,9 +37,9 @@ const typingTexts = [
 let currentTextIndex = Math.floor(Math.random() * typingTexts.length);
 let currentCharIndex = 0;
 let isDeleting = false;
-let typingSpeed = 100;
+let typingSpeed = 80;
 let isListening = false;
-let deletingSpeed = 50;
+let deletingSpeed = 40;
 let pauseTime = 2000;
 
 // Chat functionality

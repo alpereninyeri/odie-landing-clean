@@ -3,154 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Referanslarımız - Kılıç Agency</title>
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+    <title>Referanslar - Kılıç Agency</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .references-page {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
-            color: #FFFFFF;
-            padding: 60px 20px;
-        }
-        
-        .page-nav {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
-            padding: 20px 0;
-        }
-        
-        .page-nav .nav-link {
-            color: #888;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 8px 16px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .page-nav .nav-link:hover {
-            color: #E94E1B;
-            background: rgba(233, 78, 27, 0.1);
-            border-color: rgba(233, 78, 27, 0.3);
-            transform: translateY(-2px);
-        }
-        
-        .page-nav .nav-link.active {
-            color: #E94E1B;
-            background: rgba(233, 78, 27, 0.1);
-            border-color: rgba(233, 78, 27, 0.3);
-        }
-        .references-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-bottom: 40px;
-        }
-        .reference-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .reference-item {
-            background: #1a1a1a;
-            border-radius: 12px;
-            padding: 30px;
-            border: 1px solid #333;
-            transition: all 0.3s ease;
-        }
-        .reference-item:hover {
-            transform: translateY(-5px);
-            border-color: #E94E1B;
-            box-shadow: 0 10px 30px rgba(233, 78, 27, 0.2);
-        }
-        
-        .reference-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-        
-        .client-avatar {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #E94E1B, #FF6B35);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-        }
-        
-        .client-info h3 {
-            color: #E94E1B;
-            margin: 0 0 4px 0;
-            font-size: 18px;
-            font-weight: 600;
-        }
-        
-        .client-info p {
-            color: #888;
-            margin: 0;
-            font-size: 14px;
-        }
-        
-        .reference-content p {
-            color: #ccc;
-            line-height: 1.6;
-            margin-bottom: 16px;
-            font-size: 15px;
-            font-style: italic;
-        }
-        
-        .reference-rating {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
-        
-        .stars {
-            color: #FFD700;
-            font-size: 16px;
-        }
-        
-        .rating-text {
-            color: #E94E1B;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        
-        .reference-footer p {
-            color: #888;
-            margin: 0;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #E94E1B;
-            text-decoration: none;
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
-        }
-        .back-btn:hover {
-            color: #FF6B35;
-        }
-    </style>
 </head>
 <body>
     <!-- V2 Top Navigation -->
@@ -169,147 +26,148 @@
                 <a href="references.html" class="v2-nav-link active">Referanslar</a>
                 <a href="contact.html" class="v2-nav-link">İletişim</a>
             </div>
-            <button class="v2-hamburger" id="v2-hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="v2-nav-actions">
+                <button class="v2-theme-toggle" id="v2-theme-toggle" title="Tema Değiştir">
+                    <svg class="v2-theme-icon v2-sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <svg class="v2-theme-icon v2-moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </button>
+                <button class="v2-hamburger" id="v2-hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <div class="references-page page-enter">
-        <div class="references-content">
-            
-            <h1 style="font-size: 48px; margin-bottom: 20px; color: #E94E1B;">Referanslarımız</h1>
-            <p style="font-size: 18px; color: #888; margin-bottom: 40px;">Müşterilerimizin deneyimleri</p>
-            
-            <div class="reference-grid">
-                <div class="reference-item">
-                    <div class="reference-header">
-                        <div class="client-avatar">TS</div>
-                        <div class="client-info">
-                            <h3>TechStart Solutions</h3>
-                            <p>Fintech Startup</p>
+    <!-- References Page Content -->
+    <div class="v2-page-content">
+        <div class="v2-container">
+            <div class="v2-hero">
+                <h1 class="v2-hero-title">Referanslarımız</h1>
+                <p class="v2-hero-subtitle">Müşterilerimizin deneyimleri ve başarı hikayeleri</p>
+            </div>
+
+            <div class="v2-references-grid">
+                <div class="v2-reference-card">
+                    <div class="v2-reference-content">
+                        <div class="v2-reference-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="v2-reference-text">"Kılıç Agency ile çalışmak harika bir deneyimdi. Profesyonel yaklaşımları ve yaratıcı çözümleri sayesinde markamızı bir üst seviyeye taşıdık."</p>
+                        <div class="v2-reference-author">
+                            <div class="v2-author-info">
+                                <h4>Ahmet Yılmaz</h4>
+                                <span>CEO, TechStart</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="reference-content">
-                        <p>"Kılıç Agency ile çalışmak harika bir deneyimdi. Yaratıcı çözümleri ve profesyonel yaklaşımları bizi çok etkiledi. Landing page'imiz sayesinde yatırım turumuzda %40 daha fazla ilgi gördük."</p>
-                        <div class="reference-rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="rating-text">5/5</span>
-                        </div>
-                    </div>
-                    <div class="reference-footer">
-                        <p>- Ahmet Yılmaz, CEO</p>
                     </div>
                 </div>
-                
-                <div class="reference-item">
-                    <div class="reference-header">
-                        <div class="client-avatar">EM</div>
-                        <div class="client-info">
-                            <h3>E-Moda Store</h3>
-                            <p>E-ticaret Platformu</p>
+
+                <div class="v2-reference-card">
+                    <div class="v2-reference-content">
+                        <div class="v2-reference-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="v2-reference-text">"Fotoğraf ve video çekimlerimiz için Kılıç Agency'yi tercih ettik. Sonuçlar beklentilerimizi aştı. Kesinlikle tavsiye ederim."</p>
+                        <div class="v2-reference-author">
+                            <div class="v2-author-info">
+                                <h4>Elif Demir</h4>
+                                <span>Pazarlama Müdürü, FashionBrand</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="reference-content">
-                        <p>"Ürün fotoğraflarımız ve video içeriklerimiz sayesinde satışlarımız %300 arttı. Profesyonel çekimler ve yaratıcı konseptler müşteri deneyimimizi tamamen değiştirdi."</p>
-                        <div class="reference-rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="rating-text">5/5</span>
-                        </div>
-                    </div>
-                    <div class="reference-footer">
-                        <p>- Elif Kaya, Pazarlama Müdürü</p>
                     </div>
                 </div>
-                
-                <div class="reference-item">
-                    <div class="reference-header">
-                        <div class="client-avatar">RZ</div>
-                        <div class="client-info">
-                            <h3>Restoran Zinciri</h3>
-                            <p>5 Şubeli Restoran</p>
+
+                <div class="v2-reference-card">
+                    <div class="v2-reference-content">
+                        <div class="v2-reference-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="v2-reference-text">"Web sitemizin tasarımı ve geliştirilmesi sürecinde Kılıç Agency'nin profesyonelliği ve yaratıcılığı bizi çok etkiledi."</p>
+                        <div class="v2-reference-author">
+                            <div class="v2-author-info">
+                                <h4>Mehmet Kaya</h4>
+                                <span>Kurucu, DigitalSolutions</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="reference-content">
-                        <p>"Sosyal medya içeriklerimiz ve reklam videolarımız müşteri memnuniyetimizi artırdı. Instagram takipçi sayımız 3 katına çıktı. Kesinlikle tavsiye ederim."</p>
-                        <div class="reference-rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="rating-text">5/5</span>
-                        </div>
-                    </div>
-                    <div class="reference-footer">
-                        <p>- Mehmet Özkan, Genel Müdür</p>
                     </div>
                 </div>
-                
-                <div class="reference-item">
-                    <div class="reference-header">
-                        <div class="client-avatar">KK</div>
-                        <div class="client-info">
-                            <h3>Kozmetik Koleksiyon</h3>
-                            <p>Kozmetik Markası</p>
+
+                <div class="v2-reference-card">
+                    <div class="v2-reference-content">
+                        <div class="v2-reference-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="v2-reference-text">"Sosyal medya yönetimi konusunda Kılıç Agency'nin stratejik yaklaşımı sayesinde takipçi sayımız 3 katına çıktı."</p>
+                        <div class="v2-reference-author">
+                            <div class="v2-author-info">
+                                <h4>Zeynep Özkan</h4>
+                                <span>İçerik Yöneticisi, BeautyCo</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="reference-content">
-                        <p>"Influencer işbirlikleri ve viral video konseptleri sayesinde marka bilinirliğimiz %250 arttı. Yaratıcı yaklaşımları ve profesyonel ekibi ile çalışmak çok keyifli."</p>
-                        <div class="reference-rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="rating-text">5/5</span>
-                        </div>
-                    </div>
-                    <div class="reference-footer">
-                        <p>- Zeynep Demir, Marka Müdürü</p>
                     </div>
                 </div>
-                
-                <div class="reference-item">
-                    <div class="reference-header">
-                        <div class="client-avatar">İŞ</div>
-                        <div class="client-info">
-                            <h3>İnşaat Şirketi</h3>
-                            <p>Kurumsal Şirket</p>
+
+                <div class="v2-reference-card">
+                    <div class="v2-reference-content">
+                        <div class="v2-reference-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="v2-reference-text">"AI chatbot çözümümüz sayesinde müşteri hizmetlerimiz 7/24 hizmet vermeye başladı. Müşteri memnuniyetimiz arttı."</p>
+                        <div class="v2-reference-author">
+                            <div class="v2-author-info">
+                                <h4>Can Arslan</h4>
+                                <span>CTO, EcommercePro</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="reference-content">
-                        <p>"3 dakikalık tanıtım filmimiz sayesinde yeni projelerimizde %60 daha fazla talep aldık. Drone çekimleri ve profesyonel seslendirme mükemmeldi."</p>
-                        <div class="reference-rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="rating-text">5/5</span>
-                        </div>
-                    </div>
-                    <div class="reference-footer">
-                        <p>- Can Arslan, İletişim Müdürü</p>
                     </div>
                 </div>
-                
-                <div class="reference-item">
-                    <div class="reference-header">
-                        <div class="client-avatar">SM</div>
-                        <div class="client-info">
-                            <h3>Sağlık Merkezi</h3>
-                            <p>Sağlık Kurumu</p>
+
+                <div class="v2-reference-card">
+                    <div class="v2-reference-content">
+                        <div class="v2-reference-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="v2-reference-text">"Kurumsal kimlik tasarımımız için Kılıç Agency ile çalıştık. Sonuç olarak markamızın görsel kimliği çok güçlü hale geldi."</p>
+                        <div class="v2-reference-author">
+                            <div class="v2-author-info">
+                                <h4>Ayşe Yıldız</h4>
+                                <span>Kurucu, CreativeStudio</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="reference-content">
-                        <p>"Kurumsal kimlik tasarımımız ve web sitemiz sayesinde hasta memnuniyetimiz %40 arttı. Profesyonel yaklaşım ve zamanında teslimat için teşekkürler."</p>
-                        <div class="reference-rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="rating-text">5/5</span>
+                </div>
+
+                <div class="v2-reference-card">
+                    <div class="v2-reference-content">
+                        <div class="v2-reference-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="v2-reference-text">"E-ticaret sitemizin tasarımı ve optimizasyonu konusunda Kılıç Agency'nin uzmanlığı sayesinde satışlarımız %150 arttı."</p>
+                        <div class="v2-reference-author">
+                            <div class="v2-author-info">
+                                <h4>Burak Çelik</h4>
+                                <span>E-ticaret Müdürü, ShopOnline</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="reference-footer">
-                        <p>- Dr. Ayşe Yıldız, Müdür</p>
+                </div>
+
+                <div class="v2-reference-card">
+                    <div class="v2-reference-content">
+                        <div class="v2-reference-rating">⭐⭐⭐⭐⭐</div>
+                        <p class="v2-reference-text">"Reklam filmimizin prodüksiyonu sürecinde Kılıç Agency'nin yaratıcı yaklaşımı ve teknik kalitesi bizi çok etkiledi."</p>
+                        <div class="v2-reference-author">
+                            <div class="v2-author-info">
+                                <h4>Deniz Kılıç</h4>
+                                <span>Pazarlama Direktörü, BrandX</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div class="footer">
-            <p class="copyright">© 2025 Kılıç Agency. Tüm hakları saklıdır. | Yapay zeka (Odie) ile geliştirilmiştir.</p>
-        </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="v2-footer">
+        <div class="v2-container">
+            <p>&copy; 2025 Kılıç Agency. Tüm hakları saklıdır.</p>
+            <p>Developed with AI (Odie) by 2025 Kılıç Agency</p>
+        </div>
+    </footer>
 
     <!-- Scroll to Top Button -->
     <button class="v2-scroll-to-top" id="v2-scroll-to-top">

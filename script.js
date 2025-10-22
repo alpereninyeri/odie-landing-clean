@@ -195,8 +195,11 @@ function addMessage(content, isUser = false) {
     
     // Scroll to bottom with smooth animation
     setTimeout(() => {
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }, 50);
+        chatMessages.scrollTo({
+            top: chatMessages.scrollHeight,
+            behavior: 'smooth'
+        });
+    }, 100);
     
     // Additional scroll after typing animation
     setTimeout(() => {
@@ -217,7 +220,10 @@ function typeMessageWordByWord(element, text) {
             
             // Scroll to bottom during typing
             const chatMessages = document.getElementById('chat-messages');
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+            chatMessages.scrollTo({
+                top: chatMessages.scrollHeight,
+                behavior: 'smooth'
+            });
             
             // Random delay between words (50-150ms)
             const delay = Math.random() * 100 + 50;
@@ -254,7 +260,10 @@ function showTypingIndicator() {
     messageDiv.appendChild(avatar);
     messageDiv.appendChild(typingDiv);
     chatMessages.appendChild(messageDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+    chatMessages.scrollTo({
+        top: chatMessages.scrollHeight,
+        behavior: 'smooth'
+    });
 }
 
 // Hide typing indicator
@@ -506,6 +515,30 @@ function initScrollToTop() {
     }
 }
 
+// V2 Theme Toggle
+function initThemeToggle() {
+    const themeToggle = document.getElementById('v2-theme-toggle');
+    const body = document.body;
+    
+    // Load saved theme
+    const savedTheme = localStorage.getItem('odie_theme') || 'light';
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-theme');
+        themeToggle.classList.add('dark');
+    }
+    
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-theme');
+            themeToggle.classList.toggle('dark');
+            
+            // Save theme preference
+            const isDark = body.classList.contains('dark-theme');
+            localStorage.setItem('odie_theme', isDark ? 'dark' : 'light');
+        });
+    }
+}
+
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize V2 Navigation
@@ -513,6 +546,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize V2 Scroll to Top
     initScrollToTop();
+    
+    // Initialize V2 Theme Toggle
+    initThemeToggle();
     // Page enter animation removed
     
     // Start typing animation after a short delay

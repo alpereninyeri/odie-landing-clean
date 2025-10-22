@@ -28,11 +28,22 @@
                 <a href="references.html" class="v2-nav-link">Referanslar</a>
                 <a href="contact.html" class="v2-nav-link">İletişim</a>
             </div>
-            <button class="v2-hamburger" id="v2-hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <div class="v2-nav-actions">
+                <button class="v2-theme-toggle" id="v2-theme-toggle" title="Tema Değiştir">
+                    <svg class="v2-theme-icon v2-sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <svg class="v2-theme-icon v2-moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </button>
+                <button class="v2-hamburger" id="v2-hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -83,6 +94,7 @@
         <!-- Header -->
         <div class="chat-header">
             <div class="header-left">
+                <img src="logo.png" alt="Kılıç Agency" class="header-logo">
                 <h1>Odie</h1>
             </div>
         </div>

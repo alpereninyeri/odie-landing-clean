@@ -12,8 +12,7 @@ const introMessages = [
 
 // 20 different dynamic subtitle texts
 const typingTexts = [
-    "Kılıç Agency'nin yaratıcı zekâsıyım.",
-    "Işık, kadraj ve fikirle ilgileniyorum.",
+    "Dinliyorum...",
     "Ne yapmak istersin?",
     "Kreatif projelerin için buradayım.",
     "Fotoğraf ve video prodüksiyon uzmanıyım.",
@@ -31,7 +30,8 @@ const typingTexts = [
     "Markanızın hikayesini görsel olarak anlatıyoruz.",
     "Dijital pazarlama stratejileri ve içerik planlaması yapıyoruz.",
     "Kurumsal tanıtım filmleri ve reklam videoları üretiyoruz.",
-    "Sosyal medya platformları için özel içerikler hazırlıyoruz."
+    "Sosyal medya platformları için özel içerikler hazırlıyoruz.",
+    "Kılıç Agency'nin yaratıcı zekâsıyım."
 ];
 
 let currentTextIndex = 0;

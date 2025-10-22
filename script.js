@@ -150,11 +150,7 @@ function addMessage(content, isUser = false) {
     // Create avatar
     const avatar = document.createElement('div');
     avatar.className = 'message-avatar';
-    if (isUser) {
-        avatar.textContent = 'U';
-    } else {
-        avatar.innerHTML = '<div class="odie-avatar-small">❤️</div>';
-    }
+    avatar.textContent = isUser ? 'U' : '🤖';
     
     // Create message content
     const messageContent = document.createElement('div');
@@ -233,7 +229,7 @@ function showTypingIndicator() {
     // Create avatar
     const avatar = document.createElement('div');
     avatar.className = 'message-avatar';
-    avatar.innerHTML = '<div class="odie-avatar-small">❤️</div>';
+    avatar.textContent = '';
     
     // Create typing indicator
     const typingDiv = document.createElement('div');

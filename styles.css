@@ -84,10 +84,7 @@ body {
     font-size: 3.5rem;
     margin-bottom: 20px;
     line-height: 1.1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
+    text-align: center;
 }
 
 .title-light {
@@ -112,10 +109,10 @@ body {
 @keyframes breathe {
     0%, 100% { 
         transform: scale(1);
-        opacity: 0.9;
+        opacity: 0.95;
     }
     50% { 
-        transform: scale(1.02);
+        transform: scale(1.005);
         opacity: 1;
     }
 }
@@ -544,39 +541,6 @@ body {
     letter-spacing: 0.5px;
 }
 
-.odie-avatar {
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, #ff6b9d, #ff8e9b);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    animation: breathe 3s ease-in-out infinite;
-    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.3);
-}
-
-.avatar-heart {
-    font-size: 18px;
-    animation: heartbeat 2s ease-in-out infinite;
-}
-
-.avatar-nose {
-    position: absolute;
-    bottom: 6px;
-    font-size: 12px;
-    opacity: 0.8;
-}
-
-@keyframes heartbeat {
-    0%, 100% { 
-        transform: scale(1);
-    }
-    50% { 
-        transform: scale(1.1);
-    }
-}
 
 /* Chat Navigation */
 .chat-nav {
@@ -712,15 +676,9 @@ body {
 }
 
 .bot-message .message-avatar {
-    background: linear-gradient(135deg, rgba(255, 107, 157, 0.8), rgba(255, 142, 155, 0.8));
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.3));
     color: white;
-    border: 1px solid rgba(255, 107, 157, 0.3);
-    animation: breathe 3s ease-in-out infinite;
-}
-
-.odie-avatar-small {
-    font-size: 16px;
-    animation: heartbeat 2s ease-in-out infinite;
+    border: 1px solid rgba(99, 102, 241, 0.2);
 }
 
 .message-content {

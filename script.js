@@ -541,6 +541,9 @@ function initThemeToggle() {
 
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
+    // Force dark theme on load
+    document.body.classList.add('dark-theme');
+    
     // Initialize V2 Navigation
     initV2Navigation();
     

@@ -12,9 +12,9 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
 }
 
@@ -51,7 +51,7 @@ body.dark-theme .v2-logo-img {
 .v2-logo-text {
     font-size: 18px;
     font-weight: 600;
-    color: #2c3e50;
+    color: #ffffff;
 }
 
 .v2-nav-links {
@@ -61,7 +61,7 @@ body.dark-theme .v2-logo-img {
 }
 
 .v2-nav-link {
-    color: #2c3e50;
+    color: #ffffff;
     text-decoration: none;
     font-weight: 400;
     font-size: 15px;
@@ -103,7 +103,7 @@ body.dark-theme .v2-logo-img {
 
 .v2-theme-toggle {
     background: none;
-    border: 1px solid #e0e0e0;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 8px;
     cursor: pointer;
     padding: 8px;
@@ -135,7 +135,7 @@ body.dark-theme .v2-logo-img {
 .v2-moon-icon {
     opacity: 1;
     transform: rotate(0deg);
-    color: #2c3e50;
+    color: #ffffff;
 }
 
 .v2-theme-toggle.dark .v2-sun-icon {
@@ -147,7 +147,7 @@ body.dark-theme .v2-logo-img {
 .v2-theme-toggle.dark .v2-moon-icon {
     opacity: 0;
     transform: rotate(180deg);
-    color: #2c3e50;
+    color: #ffffff;
 }
 
 .v2-hamburger {
@@ -163,7 +163,7 @@ body.dark-theme .v2-logo-img {
 .v2-hamburger span {
     width: 24px;
     height: 2px;
-    background: #2c3e50;
+    background: #ffffff;
     transition: all 0.3s ease;
 }
 
@@ -220,6 +220,12 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     scroll-behavior: smooth;
+}
+
+/* Force dark theme on body */
+body.dark-theme {
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+    color: #ffffff;
 }
 
 /* Landing Page */
@@ -1960,7 +1966,7 @@ body.dark-theme .v2-form-group textarea:focus {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 20px;
-    padding: 16px 20px;
+        padding: 16px 20px;
     backdrop-filter: blur(15px);
     transition: all 0.3s ease;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -2025,7 +2031,7 @@ body.dark-theme .v2-form-group textarea:focus {
 }
 
 .copyright {
-    font-size: 12px;
+        font-size: 12px;
     color: #666;
     font-weight: 300;
 }

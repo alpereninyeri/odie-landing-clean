@@ -105,6 +105,8 @@ async function handleFirstMessage() {
     setTimeout(() => {
         landingPage.style.display = 'none';
         chatInterface.style.display = 'flex';
+        // Force a reflow to ensure display change is applied
+        chatInterface.offsetHeight;
         chatInterface.classList.add('show');
     }, 500);
     
@@ -137,6 +139,12 @@ async function handleFirstMessage() {
         thinkingDiv.remove();
         addMessage('Üzgünüm, bir hata oluştu. Lütfen tekrar deneyin.');
     } finally {
+        // Ensure chat interface is visible
+        const chatInterface = document.getElementById('chat-interface');
+        if (chatInterface) {
+            chatInterface.style.display = 'flex';
+            chatInterface.classList.add('show');
+        }
         // Focus chat input
         document.getElementById('chat-input-chat').focus();
     }
@@ -339,6 +347,51 @@ async function sendToN8N(message) {
     }
 }
 
+// Send feedback to N8N Webhook
+async function sendFeedbackToN8N(feedback) {
+    try {
+        console.log('Sending feedback to N8N webhook:', feedback);
+        
+        // Get current chat history for context
+        const currentChatHistory = chatHistory || [];
+        
+        const requestBody = {
+            type: 'feedback',
+            feedback: feedback,
+            chatHistory: currentChatHistory,
+            timestamp: new Date().toISOString(),
+            source: 'odie-landing'
+        };
+        
+        console.log('Feedback request body:', JSON.stringify(requestBody, null, 2));
+        
+        const response = await fetch(N8N_WEBHOOK_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestBody)
+        });
+        
+        console.log('Feedback response status:', response.status);
+        
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('N8N Feedback Error Response:', errorText);
+            throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+        }
+        
+        const data = await response.json();
+        console.log('N8N Feedback Response:', data);
+        
+        return data;
+        
+    } catch (error) {
+        console.error('Error calling N8N feedback webhook:', error);
+        throw error;
+    }
+}
+
 // Handle send message
 async function handleSendMessage() {
     const chatInput = document.getElementById('chat-input-chat');
@@ -383,6 +436,12 @@ async function handleSendMessage() {
         thinkingDiv.remove();
         addMessage('Üzgünüm, bir hata oluştu. Lütfen tekrar deneyin.');
     } finally {
+        // Ensure chat interface is visible
+        const chatInterface = document.getElementById('chat-interface');
+        if (chatInterface) {
+            chatInterface.style.display = 'flex';
+            chatInterface.classList.add('show');
+        }
         // Re-enable input and button
         chatInput.disabled = false;
         sendBtn.disabled = false;
@@ -464,7 +523,7 @@ function addFeedbackButtons(messageElement, messageId) {
     messageElement.appendChild(feedbackContainer);
 }
 
-function handleFeedback(messageId, rating, likeBtn, dislikeBtn) {
+async function handleFeedback(messageId, rating, likeBtn, dislikeBtn) {
     // Store feedback in localStorage
     const feedback = {
         messageId: messageId,
@@ -489,6 +548,13 @@ function handleFeedback(messageId, rating, likeBtn, dislikeBtn) {
     // Disable both buttons
     likeBtn.disabled = true;
     dislikeBtn.disabled = true;
+    
+    // Send feedback to N8N webhook
+    try {
+        await sendFeedbackToN8N(feedback);
+    } catch (error) {
+        console.error('Error sending feedback to N8N:', error);
+    }
 }
 
 // V2 Scroll to Top

@@ -16,8 +16,54 @@ const handler = async (req, res) => {
     }
     
     try {
-        const { message, chatHistory, timestamp } = req.body;
+        const { message, chatHistory, timestamp, type, feedback } = req.body;
         
+        // Handle feedback requests
+        if (type === 'feedback') {
+            console.log('Received feedback:', feedback);
+            console.log('Chat history for feedback:', chatHistory ? chatHistory.length : 0);
+            
+            // N8N Feedback Webhook URL
+            const N8N_FEEDBACK_URL = process.env.N8N_FEEDBACK_URL || 'https://kilicphoto.app.n8n.cloud/webhook-test/odie-feedback';
+            
+            // Prepare feedback payload for N8N
+            const feedbackPayload = {
+                type: 'feedback',
+                feedback: feedback,
+                chatHistory: chatHistory || [],
+                timestamp: timestamp || new Date().toISOString(),
+                source: 'odie-landing'
+            };
+            
+            console.log('Sending feedback to N8N:', N8N_FEEDBACK_URL);
+            console.log('Feedback Payload:', JSON.stringify(feedbackPayload, null, 2));
+            
+            // Send feedback to N8N
+            const n8nFeedbackResponse = await fetch(N8N_FEEDBACK_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'User-Agent': 'Odie-Landing/1.0'
+                },
+                body: JSON.stringify(feedbackPayload)
+            });
+            
+            if (!n8nFeedbackResponse.ok) {
+                console.error('N8N Feedback Error:', n8nFeedbackResponse.status, n8nFeedbackResponse.statusText);
+                throw new Error(`N8N feedback request failed: ${n8nFeedbackResponse.status}`);
+            }
+            
+            const n8nFeedbackData = await n8nFeedbackResponse.json();
+            console.log('N8N Feedback Response:', n8nFeedbackData);
+            
+            return res.status(200).json({
+                success: true,
+                message: 'Feedback received and processed',
+                timestamp: new Date().toISOString()
+            });
+        }
+        
+        // Handle regular chat messages
         if (!message) {
             return res.status(400).json({ error: 'Message is required' });
         }

@@ -796,17 +796,20 @@ body.dark-theme {
     flex-direction: column;
     min-height: 100vh;
     background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    height: 100vh;
     opacity: 0;
     transition: opacity 0.5s ease-in;
     padding-top: 70px; /* Account for fixed nav */
+    z-index: 1000;
 }
 
 .chat-interface.show {
     opacity: 1;
+    display: flex !important;
 }
 
 /* Chat Header */

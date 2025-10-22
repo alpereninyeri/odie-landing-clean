@@ -193,20 +193,14 @@ function addMessage(content, isUser = false) {
         messageText.textContent = content;
     }
     
-    // Scroll to bottom with smooth animation
+    // Scroll to bottom immediately
     setTimeout(() => {
-        chatMessages.scrollTo({
-            top: chatMessages.scrollHeight,
-            behavior: 'smooth'
-        });
-    }, 100);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }, 50);
     
     // Additional scroll after typing animation
     setTimeout(() => {
-        chatMessages.scrollTo({
-            top: chatMessages.scrollHeight,
-            behavior: 'smooth'
-        });
+        chatMessages.scrollTop = chatMessages.scrollHeight;
     }, 500);
     
     // Force scroll to bottom
@@ -228,10 +222,7 @@ function typeMessageWordByWord(element, text) {
             
             // Scroll to bottom during typing
             const chatMessages = document.getElementById('chat-messages');
-            chatMessages.scrollTo({
-                top: chatMessages.scrollHeight,
-                behavior: 'smooth'
-            });
+            chatMessages.scrollTop = chatMessages.scrollHeight;
             
             // Random delay between words (50-150ms)
             const delay = Math.random() * 100 + 50;
@@ -268,10 +259,7 @@ function showTypingIndicator() {
     messageDiv.appendChild(avatar);
     messageDiv.appendChild(typingDiv);
     chatMessages.appendChild(messageDiv);
-    chatMessages.scrollTo({
-        top: chatMessages.scrollHeight,
-        behavior: 'smooth'
-    });
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
 // Hide typing indicator

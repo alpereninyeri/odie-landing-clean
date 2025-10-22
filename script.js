@@ -447,33 +447,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
+        
+        // Add keypress listener for Enter key
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                handleFirstMessage();
+            }
+        });
     }
     
     // Landing page send button event listener
     const sendBtn = document.getElementById('send-btn');
-    sendBtn.addEventListener('click', handleFirstMessage);
-    
-    // Landing page enter key to send message
-    const chatInput = document.getElementById('chat-input');
-    chatInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            handleFirstMessage();
-        }
-    });
+    if (sendBtn) {
+        sendBtn.addEventListener('click', handleFirstMessage);
+    }
     
     // Chat interface send button event listener
     const sendBtnChat = document.getElementById('send-btn-chat');
-    sendBtnChat.addEventListener('click', handleSendMessage);
+    if (sendBtnChat) {
+        sendBtnChat.addEventListener('click', handleSendMessage);
+    }
     
     // Chat interface enter key to send message
     const chatInputChat = document.getElementById('chat-input-chat');
-    chatInputChat.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            handleSendMessage();
-        }
-    });
+    if (chatInputChat) {
+        chatInputChat.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                handleSendMessage();
+            }
+        });
+    }
     
     // Add some interactive effects
     document.addEventListener('mousemove', function(e) {
